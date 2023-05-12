@@ -11,7 +11,7 @@ ___
 
 ## Small Presentation (Snippets)
 
-![WhatsApp Clone Project Snippets ](./client/Screenshot%20(104).png)
+![WhatsApp Clone Project Snippets ](./client/img1.png)
 
 ![WhatsApp Clone Project Snippets ](./client/Screenshot%20(105).png)
 
@@ -20,7 +20,7 @@ ___
 ## Project Description
 
 ### TechStack 
-This project is build with **HTML, CSS and JavaScript**
+This project is build with **HTML, CSS and JavaScript **
 
 ### Application Usage 
 This project helps you to connect multiple users at the same time. It is like a WhatsApp Group chat where one user send a message which will be broadcast to all other users of the application. 
