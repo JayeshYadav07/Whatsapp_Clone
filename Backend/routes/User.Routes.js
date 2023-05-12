@@ -14,9 +14,7 @@ userRoutes.post("/signup", async (req, res) => {
     try {
         const userPresent = await UserModel.find({ email: email });
         if (userPresent.size > 0) {
-            return res
-                .status(400)
-                .json({ message: "User is already present." });
+            return res.status(400).json({ error: "User is already present." });
         }
 
         const hashed_password = bcrypt.hashSync(password, 4);
@@ -28,9 +26,9 @@ userRoutes.post("/signup", async (req, res) => {
         });
         await user.save();
 
-        res.json({ message: "User created successfully" });
+        res.json({ success: "User created successfully" });
     } catch (error) {
-        res.send({ message: "Something went wrong", error: error.message });
+        res.send({ error: "Something went wrong", error: error.message });
     }
 });
 
@@ -41,12 +39,12 @@ userRoutes.post("/login", async (req, res) => {
         if (!user) {
             return res
                 .status(400)
-                .json({ message: "username and password is wrong" });
+                .json({ error: "username and password is wrong" });
         }
 
         const isPasswordMatch = await bcrypt.compare(password, user.password);
         if (!isPasswordMatch) {
-            return res.status(400).json({ message: "Wrong credential" });
+            return res.status(400).json({ error: "Wrong credential" });
         }
 
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
@@ -58,13 +56,13 @@ userRoutes.post("/login", async (req, res) => {
             { expiresIn: 30000 }
         );
         return res.status(200).json({
-            message: "User login successfully",
+            success: "User login successfully",
             token: token,
             reftoken: reftoken,
             userId: user._id,
         });
     } catch (error) {
-        res.send({ message: "Something went wrong", error: error.message });
+        res.send({ error: "Something went wrong", error: error.message });
     }
 });
 
