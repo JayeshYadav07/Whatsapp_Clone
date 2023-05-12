@@ -13,34 +13,47 @@ ___
 
 ![WhatsApp Clone Project Snippets ](./client/img1.png)
 
-![WhatsApp Clone Project Snippets ](./client/Screenshot%20(105).png)
+![WhatsApp Clone Project Snippets ](./client/img2.png)
+
+![WhatsApp Clone Project Snippets ](./client/img3.png)
 
 - - -
 
-## Project Description
+# Tech stack :
 
-### TechStack 
-This project is build with **HTML, CSS and JavaScript **
+### Frontend 
+
+- HTML
+- CSS
+- JavaScript
+
+### Backend 
+
+- Node.js 
+- Express.js
+
+### Database
+
+- MongoDB 
 
 ### Application Usage 
 This project helps you to connect multiple users at the same time. It is like a WhatsApp Group chat where one user send a message which will be broadcast to all other users of the application. 
 
 ### Features (Scope of Improvement)
-Socket.io provides features of separate room. So rather than broadcasting the message to all users, it can be restricted to some users only who have the access of that room. 
-
-This feature can be added in the future. 
-
+- Login / SignUP
+- User can search user
+- User can send messages 
 ___
 
 ## Installation and Run the Project
 This project can be run through the following command: 
 
-1. Go to *nodeServer* folder  
+1. Go to *Backend* folder  
 1. Enter the directory with *cd* command
 1. After that run 
 
 ```bash
-nodemon index.js 
+npm run start
 
 OR 
 
@@ -50,8 +63,4 @@ node index.js
 
 * Socket.io
 * nodemon (optional) - for running your server permanently
-
-
-## Licence - 
-
-This project can be used freely for "fair usage and educational purposes" by anyone and it doesn't require any pre approval from the author. 
+ 
