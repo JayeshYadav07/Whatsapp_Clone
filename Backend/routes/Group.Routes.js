@@ -1,10 +1,3 @@
-// Tom -> 642320e6c798c34e7c602138
-// Jerry -> 6423246c21ec3bd25e1f5e0b
-// Tina -> 6423247721ec3bd25e1f5e0e
-// dog -> 6423248921ec3bd25e1f5e11
-
-//Test Group -> 642594b398afc508399602a2
-
 const express = require("express");
 const { GroupModel } = require("../model/Group.Model");
 const groupRoutes = express.Router();
@@ -136,67 +129,3 @@ groupRoutes.put("/leaveFromGroup", async (req, res) => {
 module.exports = {
     groupRoutes,
 };
-
-// Tina -> create group -> Admin
-
-// add -> tine ,jayesh ,tom
-
-// group , admin , newMember
-
-// authorized
-
-// req -> add member to the curr group(groupId,jayeshId,newMemeberkaId)
-
-//const group = await GroupModel.findOne({_id: groupId})
-
-// group.admin == TinaId ? access : can't access
-
-// crateGroup (adminId , groupName , groupOfUsers ,groupImg)
-//const group = new GroupModel(admin,groupOfUsers,groupName,groupImg)
-// await group.save();
-
-//------------------Admin can only access ----------------------
-
-// Add Member(newMembersId)
-// await GroupModel.updateOne(
-//     { _id: groupId },
-//     { $push: { groupOfUsers: newMembersId } }
-// );
-
-// remove Member(removeId)
-// await GroupModel.updateOne(
-//     { _id: groupId },
-//     { $pull: { groupOfUsers: removeId } }
-// );
-
-// delete group
-// await GroupModel.deleteById(groupId);
-
-//------------------All user can access ----------------------------
-
-//update group (img,name)
-
-// let newImg = img == undefined ? groupImg : img;
-// let newName = name == undefined ? groupName : name;
-
-// await GroupModel.updateOne(
-//     { _id: groupId },
-//     { $set: { groupImg: newImg } }
-//     { $set: { groupName: newName } }
-// );
-
-// send msg to group (groupId , msg , senderId)
-// await GroupModel.updateOne(
-//     { _id: groupId },
-//     {
-//         $push: { listOfMsg: { msg, senderId, senderName } },
-//     }
-// );
-
-// leave group (groupId , userId)
-// await GroupModel.updateOne(
-//     { _id: groupId },
-//     { $pull: { groupOfUsers: userId } }
-// );
-
-//
