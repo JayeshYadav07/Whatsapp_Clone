@@ -27,7 +27,7 @@ io.on("connection", (socket) => {
         obj[userId] = socket.id;
     });
 
-    //server sunnne ka kaam
+    //server listening
     socket.on("chatMsg", async (msg, receiverId, senderId) => {
         let newMsg = {
             message: msg,
@@ -44,9 +44,6 @@ io.on("connection", (socket) => {
         );
         // to individual socketid (private message)
         io.to(obj[receiverId]).emit("receivedMsg", msg, senderId);
-
-        // /// connection established ke time socket.id createHota hai
-        // tab1(socket.id) | tab2(socket.id);
     });
     socket.on("disconnect", () => {
         console.log("User Disconnected");
@@ -57,8 +54,8 @@ httpServer.listen(process.env.PORT, async () => {
     try {
         await connection;
         console.log("Connected to Database");
+        console.log("server listening on port " + process.env.PORT);
     } catch (error) {
         console.log(error);
     }
-    console.log("server listening on port " + process.env.PORT);
 });
