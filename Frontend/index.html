@@ -12,11 +12,11 @@
             <h2>SIGNUP HERE</h2>
             <form id="signup_form">
                 <label for="name_sign">Name</label>
-                <input type="text" id="name_sign" />
+                <input type="text" id="name_sign" required />
                 <label for="email_sign">Email</label>
-                <input type="email" id="email_sign" />
+                <input type="email" id="email_sign" required />
                 <label for="password_sign">Password</label>
-                <input type="password" id="password_sign" />
+                <input type="password" id="password_sign" required />
                 <label for="profile_pic">Profile Picture</label>
                 <input type="url" id="profile_pic" />
                 <input type="submit" value="Signup" />
@@ -40,59 +40,5 @@
             </form>
         </div>
     </body>
+    <script src="./script/index.js"></script>
 </html>
-
-<script>
-    const signupForm = document.getElementById("signup_form");
-    const loginForm = document.getElementById("login_form");
-
-    signupForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const payload = {
-            name: signupForm.name_sign.value,
-            email: signupForm.email_sign.value,
-            password: signupForm.password_sign.value,
-            url:
-                signupForm.profile_pic.value == undefined
-                    ? ""
-                    : signupForm.profile_pic.value,
-        };
-        // http://localhost:8080/user/signup
-
-        console.log(payload);
-        fetch("http://localhost:8080/user/signup", {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify(payload),
-        })
-            .then((res) => res.json())
-            .then((res) => console.log(res, "res"))
-            .catch((err) => console.log(err));
-    });
-
-    loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        // http://localhost:8080/user/login
-        const payload = {
-            email: loginForm.login_email.value,
-            password: loginForm.login_password.value,
-        };
-
-        console.log(payload);
-        fetch("http://localhost:8080/user/login", {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify(payload),
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                const user = res.userId;
-                window.location.href = `dashboard.html?id=${user}`;
-            })
-            .catch((err) => console.log(err));
-    });
-</script>
