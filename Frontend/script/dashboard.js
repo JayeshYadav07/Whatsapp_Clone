@@ -18,7 +18,8 @@ const groupBtn = document.getElementById("groupBtn");
 const groupDiv = document.getElementById("groupDiv");
 const logout = document.getElementById("logout");
 logout.addEventListener("click", () => {
-    window.location.href = "index.html";
+    window.location.href = "./login.html";
+    localStorage.removeItem("token");
 });
 const url = new URLSearchParams(window.location.search);
 const userId = url.get("id");
