@@ -5,7 +5,13 @@ const socket = io("http://localhost:8080/", {
 socket.on("receivedMsg", (msg, userId) => {
     const ul = document.getElementById(userId);
     const li = document.createElement("li");
-    li.textContent = msg;
+    li.className = "receive";
+    let today = new Date();
+    let hr = today.getHours() < 10 ? "0" + today.getHours() : today.getHours();
+    let min =
+        today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes();
+    let time = hr + ":" + min;
+    li.textContent = msg + " " + time;
     ul.append(li);
 });
 const searchBtn = document.getElementById("searchBtn");
@@ -52,20 +58,13 @@ function openProfile(el, data_id, msg) {
 
     //msg li
     if (msg != undefined) {
-        msg.forEach((singleMsg) => {
-            console.log(singleMsg);
-            const div = document.createElement("div");
-            div.style.marginBottom = "10px";
-            div.style.display = "flex";
-            div.style.alignItems = "center";
-            div.style.gap = "15px";
+        msg.forEach(({ data, type }) => {
+            console.log(data, type);
             const li = document.createElement("li");
-            li.textContent = singleMsg.message;
-            const p = document.createElement("p");
-            p.style.fontSize = "14px";
-            p.textContent = singleMsg.timestamp.substring(11, 16);
-            div.append(li, p);
-            ul.append(div);
+            li.textContent =
+                data.message + " " + data.timestamp.substring(11, 16);
+            li.className = type;
+            ul.append(li);
         });
     }
     // footer
@@ -145,7 +144,7 @@ function renderUsers(users) {
         div.addEventListener("click", () => {
             query.value = "";
             search_users_list.innerHTML = null;
-            //baat ka length == 0 add li , nahi tho ignored it
+
             fetch(
                 `http://localhost:8080/user/getAllMessages?user1=${userId}&user2=${el._id}`
             )
@@ -184,7 +183,13 @@ function renderUsers(users) {
 function sendMessage(el, input, ul) {
     console.log(input.value, el);
     const li = document.createElement("li");
-    li.textContent = input.value;
+    let today = new Date();
+    let hr = today.getHours() < 10 ? "0" + today.getHours() : today.getHours();
+    let min =
+        today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes();
+    let time = hr + ":" + min;
+    li.className = "send";
+    li.textContent = input.value + " " + time;
     ul.append(li);
     socket.emit("chatMsg", input.value, el._id, userId);
     input.value = "";

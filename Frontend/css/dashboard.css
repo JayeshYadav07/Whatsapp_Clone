@@ -1,18 +1,38 @@
 *{
   margin: 0;
   padding: 0;
-  color: #494949;
+  color: #000000;
   font-family: "Avenir Next", "Avenir", sans-serif;
   box-sizing: border-box;
+}
+.send{
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    /* border: 1px solid black;s */
+    text-align: end;
+    background-color:#00b291;
+    color: #e9edef;
+    border: 1px solid black;
+}
+.receive{
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    /* border: 1px solid black; */
+    text-align: start;
+    background-color: rgb(243, 243, 243);
+    border: 1px solid black;
 }
 header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid rgb(175, 175, 175);
     width: 100%;
     padding: 10px;
     margin: auto;
     align-items: center;
+    background-color: #202c33;
+    color: white;
 }
 #profile_section {
     padding: 10px;
@@ -26,12 +46,11 @@ header {
 }
 #mainDiv {
     padding: 10px;
-    display: flex;
     border-bottom: 1px solid rgb(215, 196, 196);
     width: 100%;
-    margin: auto;
+    /* margin: auto;
     justify-content: space-around;
-    align-items: center;
+    align-items: center; */
 }
 .users_list {
     padding: 5px 20px;
@@ -78,11 +97,14 @@ header {
     padding: 5px 7px;
     font-size: 14px;
 }
+.users_list_item > img{
+    border-radius: 50%;
+} 
 #usersChat ul {
-    height: 520px;
+    height: 487px;
     padding: 10px;
-    background-image: url("https://media.istockphoto.com/id/1304849823/photo/two-bubble-talk-or-comment-sign-symbol-on-blue-background.jpg?b=1&s=170667a&w=0&k=20&c=mHyYxmYyByTY2eWrxzqno5tlKFn9XNFF7zX-iPlUVSY=");
-   
+    background-image: url("../images/background.jpg");
+   overflow-y: scroll;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -111,13 +133,21 @@ header {
     display: flex;
     align-items: center;
     gap:10px;
-    background-color: rgb(234, 234, 234);
-
+    background-color: #303d45;
+    padding: 20px;
+}
+#usersHeader > span {
+    color: white;
+}
+#usersHeader > img {
+    border-radius: 50%;
 }
 /* input button */
 #usersFooter{
     padding: 10px;
-    background-color: rgb(255, 227, 203);
+    background-color: #202c33;
+    display: flex;
+    justify-content: space-between;
 }
 #usersFooter input{
     width:96%;
@@ -128,11 +158,14 @@ header {
     margin-right: 7px;
 }
 #usersFooter button{
-     padding: 5px 8px;
-     background-color: teal;
+    margin: auto;
+    width: 40px;
+     padding: 8px;
+     background-color: rgb(0, 0, 0);
      color: white;
+     outline: none;
+     border: none;
      border-radius: 3px;
-     border: 3px solid teal;
 }
 #usersFooter button i{
     color: white;
