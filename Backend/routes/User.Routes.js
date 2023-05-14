@@ -159,11 +159,13 @@ userRoutes.get("/getAllMessages", async (req, res) => {
         const msgs = userChatData.chatMessageModel;
         let allData = [];
         for (let i = 0; i < msgs.length; i++) {
-            if (
-                (msgs[i].senderId === user1 && msgs[i].receiverId === user2) ||
-                (msgs[i].senderId === user2 && msgs[i].receiverId === user1)
+            if (msgs[i].senderId === user1 && msgs[i].receiverId === user2) {
+                allData.push({ data: msgs[i], type: "send" });
+            } else if (
+                msgs[i].senderId === user2 &&
+                msgs[i].receiverId === user1
             ) {
-                allData.push(msgs[i]);
+                allData.push({ data: msgs[i], type: "receive" });
             }
         }
         res.send(allData);
